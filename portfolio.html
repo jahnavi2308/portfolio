@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jahnavi Reddy | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #3498db;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --text: #333;
+  }
+  html {
+    scroll-padding-top: 80px;
+    scroll-behavior: smooth;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  body {
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    background: var(--dark);
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .menu-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+  }
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: var(--primary);
+  }
+  .hero {
+    background: linear-gradient(120deg, #3498db, #2c3e50);
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .btn {
+    padding: 0.75rem 1.5rem;
+    background: #fff;
+    color: var(--primary);
+    border: 2px solid white;
+    border-radius: 50px;
+    text-decoration: none;
+    margin: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+  }
+  .btn:hover {
+    background: transparent;
+    color: #fff;
+  }
+  section {
+    padding: 2rem 2rem;
+    max-width: 960px;
+    margin: auto;
+  }
+  h2 {
+    color: var(--dark);
+    margin-bottom: 1.2rem;
+    font-size: 2rem;
+    border-bottom: 3px solid var(--primary);
+    display: inline-block;
+  }
+  .card {
+  background: #fff;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  flex: 0 0 280px;      /* fixed width (wider than before) */
+  height: 320px;        /* shorter height */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+.card-s {
+      background: #fff;
+      padding: 1.5rem;
+      margin: 0 0.5rem;
+      flex: 0 0 280px;
+      border-left: 5px solid var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 8px;
+    }
+
+.card p {
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+  .scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scroll-container::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+  .card a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .card a:hover {
+    text-decoration: underline;
+  }
+  .scroll-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    flex-shrink: 0;
+  }
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--dark);
+    color: white;
+    margin-top: 4rem;
+  }
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  .nav-overlay.show {
+    display: flex;
+  }
+  .nav-overlay a {
+    font-size: 1.2rem;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0.4rem 0;
+  }
+  .nav-overlay .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+  }
+  @media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    nav { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
+    .btn { display: block; margin: 1rem auto; width: 80%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Somu Jahnavi Reddy</div>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#profiles">Profiles</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="nav-overlay" id="mobileMenu">
+  <button class="close-btn" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#education" onclick="toggleMenu()">Education</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+  <a href="#profiles" onclick="toggleMenu()">Profiles</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<section class="hero">
+  <h1>Hi, I'm Jahnavi 👋</h1>
+  <p>AI & ML Undergraduate | Developer | Problem Solver</p>
+   <a href="https://drive.google.com/file/d/187XmgBJmkI2gOsApUa2zzzATPuBf16DX/view?usp=sharing" class="btn" target="_blank">View Resume</a>
+  <a href="https://www.linkedin.com/in/jahnavi-reddy-653969256/" class="btn" target="_blank">LinkedIn</a>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I’m Somu Jahnavi Reddy, final year B.Tech student in Artificial Intelligence and Machine Learning. Passionate about data-driven and AI-powered solutions.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="card">
+    <ul style="list-style: disc; padding-left: 1.5rem;">
+      <li>
+        <strong>B.Tech in Artificial Intelligence and Machine Learning</strong><br />
+        Shri Vishnu Engineering College for Women (2022 – 2026)<br />
+        <strong>CGPA:</strong> 9.23
+      </li>
+      <li style="margin-top: 1rem;">
+        <strong>Intermediate (MPC)</strong><br />
+        Narayana Junior College (2020 – 2022)<br />
+        <strong>Percentage:</strong> 95.1%
+      </li>
+      <li style="margin-top: 1rem;">
+        <strong>SSC</strong><br />
+        Viswabarathi English Medium High School (2019 – 2020)<br />
+        <strong>Percentage:</strong> 100%
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div style="display: flex; align-items: center;">
+    <button class="scroll-btn" onclick="scrollProjects(-300)">&#8592;</button>
+    <div class="scroll-container" id="projectScroll">
+      <div class="card">
+        <strong>Cotton Disease Prediction</strong><br/>
+        <a href="#">GitHub</a>
+        <p>Developed a CNN-based deep learning model to classify cotton plant diseases. Used real-time augmentation and convolutional layers, achieving high accuracy.</p>
+        <em><b>Tech Stack :</b> Python, TensorFlow, CNN</em>
+      </div>
+      <div class="card">
+        <strong>Farmer Buddy – Smart Assistant</strong><br/>
+        <a href="#">GitHub</a>
+        <p>Unified web platform recommending crops and fertilizers based on soil and climate using Random Forest & Gradient Boosting models.</p>
+        <em><b>Tech Stack :</b> Flask, React.js, Firebase</em>
+      </div>
+      <div class="card">
+        <strong>Data Professionals Survey Insights Dashboard</strong><br/>
+        <a href="#">GitHub</a>
+        <p>Interactive Power BI dashboard showing survey insights like salaries, tools, and job satisfaction from 630 data professionals worldwide.</p>
+        <em><b>Tech Stack :</b> Power BI</em>
+      </div>
+      <div class="card">
+        <strong>Personal Portfolio Website</strong><br/>
+        <a href="#">GitHub</a>
+        <p>Responsive personal website to showcase my skills, projects, and achievements with clean UI and smooth navigation.</p>
+        <em><b>Tech Stack :</b> HTML, CSS</em>
+      </div>
+      <!-- ✅ Add more cards here dynamically, it will keep scrolling -->
+    </div>
+    <button class="scroll-btn" onclick="scrollProjects(300)">&#8594;</button>
+  </div>
+</section>
+
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="card-s">
+    <strong>Languages:</strong> Python, Java, C, SQL<br/>
+    <strong>Web:</strong> HTML, CSS, JS<br/>
+    <strong>Frameworks:</strong> ReactJS, Node.js, Pandas, NumPy, Matplotlib<br/>
+    <strong>Tools:</strong> Git, MySQL, Tableau, Power BI<br/>
+    <strong>Platforms:</strong>Visual Studio Code, Google Colab</br>
+    <strong>Core Area:</strong> DSA, ML<br/>
+    <strong>Soft Skills:</strong> Self-Motivation, Teamwork, Adaptability, Time Management<br/>
+  </div>
+</section>
+
+<section id="achievements">
+  <h2>Hackathons & Achievements</h2>
+  <div class="card-s">
+    <strong>Google Developer Student Club Hackathon – SVECW, 2024</strong><br/>
+    Participated in a campus-level GDSC Hackathon.Built a project titled "InformationHub"– a web platform to explore company brands, job postings, and human rights.
+  </div>
+</section>
+
+<section id="profiles">
+  <h2>Profiles</h2>
+  <div class="card-s">
+    <a href="#">LeetCode</a><br/>
+    <a href="#">HackerRank</a><br/>
+    <a href="#">CodeChef</a><br/>
+    <a href="#">InterviewBit</a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card-s">
+    Email: <a href="mailto:jahnavireddysomu@gmail.com">jahnavireddysomu@gmail.com</a><br/>
+    GitHub: <a href="https://github.com/jahnavi2308">github.com/jahnavi2308</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Jahnavi Reddy. All Rights Reserved.
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('show');
+  }
+  function scrollProjects(offset) {
+    document.getElementById('projectScroll').scrollBy({ left: offset, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
